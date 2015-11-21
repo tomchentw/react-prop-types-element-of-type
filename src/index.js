@@ -57,4 +57,5 @@ function getExtraMessage (expectedComponent, actualComponent) {
       `https://github.com/facebook/react/pull/4716#issuecomment-135145263`
     );
   }
+  return ``;
 }
