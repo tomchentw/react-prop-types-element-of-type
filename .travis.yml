@@ -1,0 +1,11 @@
+sudo: false
+language: node_js
+node_js:
+- "5"
+- "4"
+before_install:
+  - npm install -g npm
+script:
+  - npm run test:cov
+after_script:
+  - if [[ `node --version` == *v4* ]]; then cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter; fi
