@@ -1,8 +1,14 @@
 import {default as ReactElement} from "react/lib/ReactElement";
 import {default as ReactPropTypeLocationNames} from "react/lib/ReactPropTypeLocationNames";
 
-const ANONYMOUS = '<<anonymous>>';
+const ANONYMOUS = `<<anonymous>>`;
 
+/* Check if the given element is created by specific Component. i.e.,
+ * `element = React.createElement(Component, {})`
+ *
+ * @author: @cassiozen
+ * @origin: https://github.com/facebook/react/pull/4716
+ */
 export default function createComponentTypeChecker(expectedComponent) {
   function validate(isRequired, props, propName, componentName, location, propFullName) {
     const locationName = ReactPropTypeLocationNames[location];
@@ -17,14 +23,17 @@ export default function createComponentTypeChecker(expectedComponent) {
       }
     }
 
-    if (!ReactElement.isValidElement(props[propName]) || props[propName].type !== expectedComponent) {
+    const actualComponent = props[propName].type;
+    if (!ReactElement.isValidElement(props[propName]) || actualComponent !== expectedComponent) {
       const expectedComponentName = getComponentName(expectedComponent);
-      const actualComponentName = getComponentName(props[propName].type);
+      const actualComponentName = getComponentName(actualComponent);
+
+      const extraMessage = getExtraMessage(expectedComponent, actualComponent);
 
       return new Error(
         `Invalid ${locationName} \`${propFullName}\` of element type ` +
         `\`${actualComponentName}\` supplied to \`${componentName}\`, expected ` +
-        `element type \`${expectedComponentName}\`.`
+        `element type \`${expectedComponentName}\`.${ extraMessage }`
       );
     }
     return null;
@@ -38,4 +47,14 @@ export default function createComponentTypeChecker(expectedComponent) {
 // Returns class name of the object, if any.
 function getComponentName(componentClass) {
   return componentClass && componentClass.name || ANONYMOUS;
+}
+
+function getExtraMessage (expectedComponent, actualComponent) {
+  if (expectedComponent.prototype.isPrototypeOf(actualComponent.prototype)) {
+    return ` ` + (
+      `Notice that component inheritance is discouraged in React. ` + 
+      `See discussions here: ` +
+      `https://github.com/facebook/react/pull/4716#issuecomment-135145263`
+    );
+  }
 }

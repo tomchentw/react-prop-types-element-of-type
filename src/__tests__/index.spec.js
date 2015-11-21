@@ -78,9 +78,35 @@ describe(`propTypesElementOfType`, () => {
     typeCheckPass(propTypesElementOfType(ChildComponent), null);
     typeCheckPass(propTypesElementOfType(ChildComponent), undefined);
   });
+
+  describe(`component inheritance`, () => {
+    it(`should warn that`, () => {
+      class XGrandChildComponent extends ChildComponent {
+        render () {
+          return <div>GrandChild</div>;
+        }
+      }
+
+      const component = render(<WrapperComponent childElement={<XGrandChildComponent />} />, domEl);
+
+      expect(consoleErrorSpy.calls.length).toBe(1);
+    });
+
+    it(`should contains message that points back to GitHub issue thread`, () => {
+      class YGrandChildComponent extends ChildComponent {
+        render () {
+          return <div>GrandChild</div>;
+        }
+      }
+
+      const component = render(<WrapperComponent childElement={<YGrandChildComponent />} />, domEl);
+
+      expect(consoleErrorSpy.calls[0].arguments[0]).toInclude(`facebook/react/pull/4716`);
+    });
+  });
 });
 
-
+// copy from facebook/react@0.14-stable: http://git.io/v4pv5
 function typeCheckPass(declaration, value) {
   var props = {testProp: value};
   var error = declaration(
