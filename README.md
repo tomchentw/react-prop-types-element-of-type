@@ -12,6 +12,8 @@
 npm install --save react-prop-types-element-of-type
 ```
 
+See [test cases](https://github.com/tomchentw/react-prop-types-element-of-type/blob/master/src/__tests__/index.spec.js) for usage.
+
 
 ## Development
 
