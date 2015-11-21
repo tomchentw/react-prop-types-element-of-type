@@ -1,3 +1,13 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.0...v1.0.1) (2015-11-21)
+
+
+### Bug Fixes
+
+* **propTypesElementOfType:** propFullName defaults to propName ([9f0d2ce](https://github.com/tomchentw/react-prop-types-element-of-type/commit/9f0d2ce))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2015-11-21)
 
