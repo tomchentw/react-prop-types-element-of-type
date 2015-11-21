@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.1...v1.0.2) (2015-11-21)
+
+
+### Bug Fixes
+
+* **propTypesElementOfType:** getExtraMessage defaults to empty message ([33e14d4](https://github.com/tomchentw/react-prop-types-element-of-type/commit/33e14d4))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.0...v1.0.1) (2015-11-21)
 
