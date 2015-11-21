@@ -10,7 +10,7 @@ const ANONYMOUS = `<<anonymous>>`;
  * @origin: https://github.com/facebook/react/pull/4716
  */
 export default function createComponentTypeChecker(expectedComponent) {
-  function validate(isRequired, props, propName, componentName, location, propFullName) {
+  function validate(isRequired, props, propName, componentName, location, propFullName = propName) {
     const locationName = ReactPropTypeLocationNames[location];
     if (null == props[propName]) {
       if (isRequired) {
