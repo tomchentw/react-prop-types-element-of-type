@@ -1,5 +1,5 @@
 # react-prop-types-element-of-type [![Travis CI][travis-image]][travis-url] [![Quality][codeclimate-image]][codeclimate-url] [![Coverage][codeclimate-coverage-image]][codeclimate-coverage-url] [![Dependencies][gemnasium-image]][gemnasium-url] [![Gitter][gitter-image]][gitter-url]
->
+> Check if given React element is created by certain Component type
 
 [![Version][npm-image]][npm-url]
 
