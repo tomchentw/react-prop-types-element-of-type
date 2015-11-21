@@ -1,11 +1,15 @@
 sudo: false
 language: node_js
 node_js:
-- "5"
-- "4"
+- '5'
+- '4'
 before_install:
-  - npm install -g npm
+- npm install -g npm
 script:
-  - npm run test:cov
+- npm run test:cov
 after_script:
-  - if [[ `node --version` == *v4* ]]; then cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter; fi
+- if [[ `node --version` == *v4* ]]; then cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter;
+  fi
+env:
+  global:
+    secure: J230bGzyXDBSCOUJRaNWpSC0OgqOYn+ftLpNtyzQjPAO2Ip1Bx1kcL3TkINPXYurpXbDDkqgLq3t/6aXuCNhjWwaRopyKkhba9MKF77ei8JA14zQnoHmEyTICC5xrbcH6PD3IDoBe7IBjY0fhTa/geMQ34BEMk5imhd5aU05JDXb0kohwFtbUxKuiiaC5JCAy3r3tW4Wu7mDhagPkmkMuYm8E1xN6sHl9tprTw053xOKdz5GjYmsgVBgEb30fYCkOP+blrmn0polAdgn8GTtoAGX1chS/9AcoB750fmGz0n2Vr4OR2F3Xe38uDF11tixVFgiV7CLnv/OcXBKt9JasuG7L+4q+qmVb91d8tkayfZtjr1JOGCRlT9bmb9lta8gGl+bf12GAl7UB8KlFiJ1DUeVDRB1dkY+B1bxOB0JNuEu/Tgphxa+xXWTvCN5uGdIrzZ2jnQfl+YC2LHJP/R+tQPPzNhPrMNkdstT8kbGfCAcMXGjZbSyS8WxS/Yh1HcI3K8PxNQD+FKwobRakFUeyxM6+rWh9MSh0UNT5T1siDHF0PRdkR3E1UVTwzAUGNYaA36p3yywijyYf/OgCv0BM+kZmxz/PIpmvsoH7AFndK8zm7CGg20h7lG/vMfBoxCWmUx2ZB5ijBMPo1aHOIJxNKdhvTb3zmimJz+1o4ehK3Q=
