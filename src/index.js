@@ -1,5 +1,10 @@
-import {default as ReactElement} from "react/lib/ReactElement";
-import {default as ReactPropTypeLocationNames} from "react/lib/ReactPropTypeLocationNames";
+import {
+  default as ReactElement,
+} from "react/lib/ReactElement";
+
+import {
+  default as ReactPropTypeLocationNames,
+} from "react/lib/ReactPropTypeLocationNames";
 
 const ANONYMOUS = `<<anonymous>>`;
 
@@ -12,7 +17,7 @@ const ANONYMOUS = `<<anonymous>>`;
 export default function createComponentTypeChecker(expectedComponent) {
   function validate(isRequired, props, propName, componentName, location, propFullName = propName) {
     const locationName = ReactPropTypeLocationNames[location];
-    if (null == props[propName]) {
+    if (props[propName] === null || props[propName] === undefined) {
       if (isRequired) {
         return new Error(
           `Required ${locationName} \`${propFullName}\` was not specified in ` +
@@ -49,10 +54,10 @@ function getComponentName(componentClass) {
   return componentClass && componentClass.name || ANONYMOUS;
 }
 
-function getExtraMessage (expectedComponent, actualComponent) {
+function getExtraMessage(expectedComponent, actualComponent) {
   if (expectedComponent.prototype.isPrototypeOf(actualComponent.prototype)) {
     return ` ` + (
-      `Notice that component inheritance is discouraged in React. ` + 
+      `Notice that component inheritance is discouraged in React. ` +
       `See discussions here: ` +
       `https://github.com/facebook/react/pull/4716#issuecomment-135145263`
     );

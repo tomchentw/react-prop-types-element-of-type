@@ -1,11 +1,12 @@
+/* eslint-disable func-names */
+/* eslint-disable react/no-multi-comp */
+
 import {
   default as expect,
 } from "expect";
 
 import {
   default as React,
-  Children,
-  PropTypes,
   Component,
 } from "react";
 
@@ -22,84 +23,86 @@ import {
   default as propTypesElementOfType,
 } from "../index";
 
-describe(`propTypesElementOfType`, () => {
+describe(`propTypesElementOfType`, function () {
   let domEl;
   let ChildComponent;
   let WrapperComponent;
   let consoleErrorSpy;
 
-  beforeEach(() => {
+  beforeEach(function () {
     domEl = document.createElement(`div`);
 
     ChildComponent = class C extends Component {
-      render () {
+      render() {
         return <div>Child</div>;
       }
-    }
+    };
 
+    /* eslint-disable react/prefer-es6-class */
     WrapperComponent = React.createClass({
       propTypes: {
         childElement: propTypesElementOfType(ChildComponent).isRequired,
       },
 
-      render () {
+      render() {
         return <div>{this.props.childElement}</div>;
       },
     });
+    /* eslint-enable react/prefer-es6-class */
 
     consoleErrorSpy = expect.spyOn(console, `error`);
   });
 
-  afterEach(() => {
+  afterEach(function () {
     consoleErrorSpy.restore();
     unmountComponentAtNode(domEl);
     domEl = null;
   });
 
-  it(`should warn for invalid element`, () => {
-    const component = render(<WrapperComponent childElement={<div />} />, domEl);
+  it(`should warn for invalid element`, function () {
+    render(<WrapperComponent childElement={<div />} />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(1);
   });
 
-  it(`should warn when passing no element and isRequired is set`, () => {
-    const component = render(<WrapperComponent />, domEl);
+  it(`should warn when passing no element and isRequired is set`, function () {
+    render(<WrapperComponent />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(1);
   });
 
-  it(`should not warn for valid element`, () => {
-    const component = render(<WrapperComponent childElement={<ChildComponent />} />, domEl);
+  it(`should not warn for valid element`, function () {
+    render(<WrapperComponent childElement={<ChildComponent />} />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(0);
   });
 
-  it(`should be implicitly optional and not warn without values`, () => {
+  it(`should be implicitly optional and not warn without values`, function () {
     typeCheckPass(propTypesElementOfType(ChildComponent), null);
     typeCheckPass(propTypesElementOfType(ChildComponent), undefined);
   });
 
-  describe(`component inheritance`, () => {
-    it(`should warn that`, () => {
+  describe(`component inheritance`, function () {
+    it(`should warn that`, function () {
       class XGrandChildComponent extends ChildComponent {
-        render () {
+        render() {
           return <div>GrandChild</div>;
         }
       }
 
-      const component = render(<WrapperComponent childElement={<XGrandChildComponent />} />, domEl);
+      render(<WrapperComponent childElement={<XGrandChildComponent />} />, domEl);
 
       expect(consoleErrorSpy.calls.length).toBe(1);
     });
 
-    it(`should contains message that points back to GitHub issue thread`, () => {
+    it(`should contains message that points back to GitHub issue thread`, function () {
       class YGrandChildComponent extends ChildComponent {
-        render () {
+        render() {
           return <div>GrandChild</div>;
         }
       }
 
-      const component = render(<WrapperComponent childElement={<YGrandChildComponent />} />, domEl);
+      render(<WrapperComponent childElement={<YGrandChildComponent />} />, domEl);
 
       expect(consoleErrorSpy.calls[0].arguments[0]).toInclude(`facebook/react/pull/4716`);
     });
@@ -108,8 +111,8 @@ describe(`propTypesElementOfType`, () => {
 
 // copy from facebook/react@0.14-stable: http://git.io/v4pv5
 function typeCheckPass(declaration, value) {
-  var props = {testProp: value};
-  var error = declaration(
+  const props = { testProp: value };
+  const error = declaration(
     props,
     `testProp`,
     `testComponent`,
@@ -117,4 +120,3 @@ function typeCheckPass(declaration, value) {
   );
   expect(error).toBe(null);
 }
-
