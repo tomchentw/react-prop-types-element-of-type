@@ -1,6 +1,6 @@
 {
   "name": "react-prop-types-element-of-type",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Check if given React element is created by certain Component type",
   "main": "lib/index.js",
   "files": [
@@ -68,8 +68,7 @@
     "thenify": "^3.1.1",
     "tomchentw-npm-dev": "^3.2.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^0.14.6"
   }

@@ -1,3 +1,22 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.2...v2.0.0) (2016-01-25)
+
+
+### Bug Fixes
+
+* **package.json:** remove unused invariant from dependencies ([dd53afe](https://github.com/tomchentw/react-prop-types-element-of-type/commit/dd53afe))
+
+### Features
+
+* **lib:** compile from src using babel ([54537c4](https://github.com/tomchentw/react-prop-types-element-of-type/commit/54537c4))
+
+
+### BREAKING CHANGES
+
+* lib: Remove commonjs (module.exports) support
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.1...v1.0.2) (2015-11-21)
 
