@@ -1,4 +1,4 @@
-/* eslint-disable func-names */
+/* eslint-disable prefer-arrow-callback */
 /* eslint-disable react/no-multi-comp */
 
 import {
@@ -23,13 +23,13 @@ import {
   default as propTypesElementOfType,
 } from "../index";
 
-describe(`propTypesElementOfType`, function () {
+describe(`propTypesElementOfType`, function describePropTypesElementOfType() {
   let domEl;
   let ChildComponent;
   let WrapperComponent;
   let consoleErrorSpy;
 
-  beforeEach(function () {
+  beforeEach(function beforeEachPropTypesElementOfType() {
     domEl = document.createElement(`div`);
 
     ChildComponent = class C extends Component {
@@ -53,37 +53,37 @@ describe(`propTypesElementOfType`, function () {
     consoleErrorSpy = expect.spyOn(console, `error`);
   });
 
-  afterEach(function () {
+  afterEach(function bafterEachPropTypesElementOfType() {
     consoleErrorSpy.restore();
     unmountComponentAtNode(domEl);
     domEl = null;
   });
 
-  it(`should warn for invalid element`, function () {
+  it(`should warn for invalid element`, function it() {
     render(<WrapperComponent childElement={<div />} />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(1);
   });
 
-  it(`should warn when passing no element and isRequired is set`, function () {
+  it(`should warn when passing no element and isRequired is set`, function it() {
     render(<WrapperComponent />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(1);
   });
 
-  it(`should not warn for valid element`, function () {
+  it(`should not warn for valid element`, function it() {
     render(<WrapperComponent childElement={<ChildComponent />} />, domEl);
 
     expect(consoleErrorSpy.calls.length).toBe(0);
   });
 
-  it(`should be implicitly optional and not warn without values`, function () {
+  it(`should be implicitly optional and not warn without values`, function it() {
     typeCheckPass(propTypesElementOfType(ChildComponent), null);
     typeCheckPass(propTypesElementOfType(ChildComponent), undefined);
   });
 
-  describe(`component inheritance`, function () {
-    it(`should warn that`, function () {
+  describe(`component inheritance`, function describeComponentInheritance() {
+    it(`should warn that`, function it() {
       class XGrandChildComponent extends ChildComponent {
         render() {
           return <div>GrandChild</div>;
@@ -95,7 +95,7 @@ describe(`propTypesElementOfType`, function () {
       expect(consoleErrorSpy.calls.length).toBe(1);
     });
 
-    it(`should contains message that points back to GitHub issue thread`, function () {
+    it(`should contains message that points back to GitHub issue thread`, function it() {
       class YGrandChildComponent extends ChildComponent {
         render() {
           return <div>GrandChild</div>;
