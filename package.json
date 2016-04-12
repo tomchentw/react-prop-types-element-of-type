@@ -1,7 +1,7 @@
 {
   "name": "react-prop-types-element-of-type",
   "version": "2.0.1",
-  "description": "Check if given React element is created by certain Component type",
+  "description": "Check if given React element is created by certain Component type (fork for react-15)",
   "main": "lib/index.js",
   "files": [
     "lib/",
