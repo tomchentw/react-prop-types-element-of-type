@@ -1,3 +1,13 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v2.0.0...v2.1.0) (2016-04-26)
+
+
+### Features
+
+* **package.json:** support react@^15.0.0-0 ([34aa660](https://github.com/tomchentw/react-prop-types-element-of-type/commit/34aa660)), closes [#1](https://github.com/tomchentw/react-prop-types-element-of-type/issues/1)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v1.0.2...v2.0.0) (2016-01-25)
 
