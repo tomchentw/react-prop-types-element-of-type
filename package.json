@@ -31,8 +31,10 @@
   "keywords": [
     "React.js",
     "React",
+    "ReactElement",
     "propTypes",
-    "elementOfType"
+    "elementOfType",
+    "componentOfType"
   ],
   "author": {
     "name": "tomchentw",
