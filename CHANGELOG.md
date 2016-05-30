@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v2.1.0...v2.2.0) (2016-05-30)
+
+
+### Features
+
+* **package.json:** upgrade devDependencies ([c98c5a0](https://github.com/tomchentw/react-prop-types-element-of-type/commit/c98c5a0))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/tomchentw/react-prop-types-element-of-type/compare/v2.0.0...v2.1.0) (2016-04-26)
 
@@ -55,6 +69,3 @@
 
 * **propTypesElementOfType:** create element of type validator ([45e1613](https://github.com/tomchentw/react-prop-types-element-of-type/commit/45e1613))
 * **propTypesElementOfType:** warn about component inheritance ([6bd3095](https://github.com/tomchentw/react-prop-types-element-of-type/commit/6bd3095))
-
-
-
