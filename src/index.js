@@ -38,7 +38,7 @@ export default function createComponentTypeChecker(expectedComponent) {
       return new Error(
         `Invalid ${locationName} \`${propFullName}\` of element type ` +
         `\`${actualComponentName}\` supplied to \`${componentName}\`, expected ` +
-        `element type \`${expectedComponentName}\`.${ extraMessage }`
+        `element type \`${expectedComponentName}\`.${extraMessage}`
       );
     }
     return null;

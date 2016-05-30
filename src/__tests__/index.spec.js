@@ -1,6 +1,6 @@
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable react/no-multi-comp */
-
+/* eslint-disable react/prefer-stateless-function */
 import {
   default as expect,
 } from "expect";
